@@ -43,6 +43,9 @@ formTarea.onsubmit = function (event) {
         Swal.getConfirmButton().addEventListener("click", (event) => {
             $("#agregar-tarea-modal").modal("hide");
         });
+
+        tituloTareaInput.value = "" 
+        descripcionTareaInput.value = ""
     }
     return false;
 };
@@ -54,7 +57,7 @@ function renderizarTareasPendientes() {
     listaTareasPendientes.forEach((tarea, index) => {
         console.log(tarea);
         body.innerHTML += `
-        <tr>
+        <tr draggable="true" ondragstart="dragit(event)" ondragover="dragover(event)">
             <th scope="row">${index + 1}</th>
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
