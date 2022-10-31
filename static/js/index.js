@@ -20,7 +20,7 @@ formTarea.onsubmit = function (event) {
             false,
             descripcionTareaInput.value
         );
-
+        console.log(tareaExiste(tarea))
         if (tareaExiste(tarea)){
             mostrarMensaje(
                 "Ya existe una tarea con ese nombre o descripción",
@@ -66,10 +66,12 @@ function renderizarTareasPendientes() {
 function tareaExiste(tarea) {
     let test = false;
     listaTareasPendientes.forEach((item) => {
+        console.log(tarea, item)
         if (
-            tarea.nombre == item.nombre ||
+            tarea.titulo == item.titulo ||
             tarea.descripcion == item.descripcion
         ) {
+            console.log( tarea.nombre == item.nombre, tarea.descripcion == item.descripcion)
             test = true;
         }
     });
