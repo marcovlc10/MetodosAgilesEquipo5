@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <script src="static/js/jquery-3..6.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles/index.css">
+
+    <!-- Sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <title>POMODORO</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Nav -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- Container wrapper -->
+            <div class="container-fluid p-0">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="">
+                    <h1><i class="fa-solid fa-clock"></i>Pomodoro</h1>
+                </a>
+
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    </ul>
+                    <!-- Left links -->
+
+                    <div class="d-flex align-items-center">
+                        <!-- Botones -->
+                        <div class="d-flex">
+
+                            <!-- Btn agregar tarea -->
+                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
+                                data-bs-target="#agregar-tarea-modal">
+                                Agregar tarea
+                            </button>
+                            <!-- End: Btn agregar tarea -->
+                            <a class="btn btn-secondary me-3" data-bs-toggle="collapse" href="#tares-pendientes-div"
+                                role="button" aria-expanded="false" aria-controls="tareas-pendientes-div">
+                                Mostrar tareas pendientes
+                            </a>
+
+
+                            <a class="btn btn-secondary me-3" data-bs-toggle="collapse" href="#tares-completadas-div"
+                                role="button" aria-expanded="false" aria-controls="tareas-completadas-div">
+                                Mostrar tareas completadas
+                            </a>
+
+                        </div>
+                        <!-- End: Botones -->
+
+                    </div>
+                </div>
+                <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- End:Nav -->
+
+
+        <!-- Modal crear tarea -->
+        <div class="modal fade" id="agregar-tarea-modal" tabindex="-1" aria-labelledby="titleLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleLabel">Agregar tarea</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="#" id="form-tarea">
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="titulo-tarea-input" class="form-label">Título de la tareal</label>
+                                <input type="text" class="form-control" id="titulo-tarea-input"
+                                    placeholder="Título de la tarea" maxlength="100" minlength="1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion-tarea-input" class="form-label">Descripción de la tarea</label>
+                                <textarea class="form-control" id="descripcion-tarea-input"
+                                    placeholder="Descripción de la tarea" required></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="agregar-tarea-btn">Agregar tarea</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End: Modal crear tarea -->
+
+        <!-- Tareas pendientes -->
+        <div class="collapse" id="tares-pendientes-div">
+            <div class="card pt-3">
+                <h5 class="card-header">Tareas pendientes</h5>
+                <div class="card-body">
+                    <table class="table" id="tareas-pendientes-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Título de la tarea</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Marcar como completada</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End: tareas pendientes -->
+
+        <!-- Tareas completadas -->
+        <div class="collapse" id="tares-completadas-div">
+            <div class="card pt-3">
+                <h5 class="card-header">Tareas completadas</h5>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Título de la tarea</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Marcar como completada</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End: tareas completadas -->
+
+    </div>
+
+    <!-- JavasCript -->
+    <script src="static/js/Tarea.js"></script>
+    <script src="static/js/index.js"></script>
+</body>
+
+</html>
