@@ -58,10 +58,10 @@ function renderizarTareasPendientes() {
         console.log(tarea);
         body.innerHTML += `
         <tr draggable="true" ondragstart="dragit(event)" ondragover="dragover(event)">
-            <th scope="row">${index + 1}</th>
+            <th scope="row">${tarea.id}</th>
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
-            <td><input type="checkbox" class="form-check-input"></td>
+            <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="enProgreso(this)" data-tarea="${tarea.id}">En proceso</button></td>
         </tr>`;
     });
 }
