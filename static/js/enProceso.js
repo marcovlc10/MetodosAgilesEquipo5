@@ -26,6 +26,7 @@ function renderizarTareasProceso() {
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
             <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="iniciarTemporizador()" data-tarea="${tarea.id}">Iniciar temporizador</button></td>
+            <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="terminar(this)" data-tarea_terminada="${tarea.id}">Terminar tarea</button></td>
         </tr>`;
     });
 }

@@ -69,6 +69,11 @@
                                 Mostrar tareas en proceso
                             </a>
 
+                            <a class="btn btn-secondary me-3" data-bs-toggle="collapse" href="#tares-terminadas-div"
+                                role="button" aria-expanded="false" aria-controls="tareas-terminadas-div">
+                                Mostrar tareas terminadas
+                            </a>
+
                         </div>
                         <!-- End: Botones -->
 
@@ -84,7 +89,7 @@
         <center class="mb-3">
             <h2>temporizador</h2>
             <h4 id="tiempo">00:00</h4>
-            <button class="btn btn-danger" onclick="pausarTemporizador()">Pausar</button>
+            <button class="btn btn-danger" onclick="pausarTemporizador()" id="btn-pausar" disabled>Pausar</button>
             <button class="btn btn-success" onclick="iniciarTemporizador()">Renaudar</button>
 
         </center>
@@ -160,7 +165,31 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Título de la tarea</th>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Iniciar tarea</th>
                                 <th scope="col">Marcar como completada</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End: tareas completadas -->
+
+         <!-- Tareas en terminadas -->
+         <div class="collapse" id="tares-terminadas-div">
+            <div class="card pt-3">
+                <h5 class="card-header">Tareas terminadas</h5>
+                <div class="card-body">
+                    <table class="table" id="tareas-terminadas-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Título de la tarea</th>
+                                <th scope="col">Descripción</th>
 
                             </tr>
                         </thead>
@@ -179,6 +208,7 @@
     <script src="static/js/Tarea.js"></script>
     <script src="static/js/index.js"></script>
     <script src="static/js/enProceso.js"></script>
+    <script src="static/js/terminada.js"></script>
     <!-- <script src="static/js/enProceso.js"></script> -->
     <script src="static/js/temporizador.js"></script>
     <script>
