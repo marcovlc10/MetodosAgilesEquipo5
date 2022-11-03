@@ -46,6 +46,8 @@ function preguntarPorConfirmacion(tarea, index) {
             listaTareasProceso.splice(index, 1);
             renderizarTareasProceso();
             renderizarTareasTerminadas();
+            termiarTemporizador()
+
             Swal.fire("Tarea terminada!", "", "success");
             
         } else if (result.isDenied) {
