@@ -53,7 +53,8 @@ function preguntarPorConfirmacion(tarea, index) {
             hora=fecha.toLocaleTimeString('en-US');
             renderizarTareasProceso();
             renderizarTareasTerminadas();
-            termiarTemporizador()
+            termiarTemporizador();
+            restablecerTemporizador();
 
             Swal.fire("Tarea terminada!", "", "success");
             

@@ -87,10 +87,11 @@
 
         <!-- Temporizador -->
         <center class="mb-3">
-            <h2>temporizador</h2>
-            <h4 id="tiempo">00:00</h4>
+            <h2>Temporizador</h2>
+            <h4 id="tiempo">00:10</h4>
             <button class="btn btn-danger" onclick="pausarTemporizador()" id="btn-pausar" disabled>Pausar</button>
             <button class="btn btn-success" onclick="iniciarTemporizador()" id="btn-renaudar" disabled>Renaudar</button>
+            <button class="btn btn-danger" onclick="restablecerTemporizador()" id="btn-rest" disabled>Restablecer</button>
 
         </center>
 
@@ -167,6 +168,7 @@
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Iniciar tarea</th>
                                 <th scope="col">Marcar como completada</th>
+                                <th scope="col">Reestablecer Temporizador</th>
 
                             </tr>
                         </thead>

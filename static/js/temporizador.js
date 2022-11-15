@@ -12,10 +12,13 @@ let temporizadorId = 0;
 const tiempoText = document.getElementById("tiempo");
 const btnPausar = document.getElementById("btn-pausar");
 const btnRenaudar = document.getElementById("btn-renaudar");
+const btnRest = document.getElementById("btn-rest");
 
 function iniciarTemporizador() {
     temporizadorId = setInterval(correrTiempo, 100);
     btnPausar.removeAttribute("disabled");
+    btnRest.removeAttribute("disabled");
+    btnRenaudar.setAttribute("disabled", "disabled");
 }
 
 function correrTiempo() {
@@ -49,12 +52,41 @@ function pausarTemporizador() {
     clearInterval(temporizadorId);
     btnPausar.setAttribute("disabled", "disabled");
     btnRenaudar.setAttribute("disabled", "disabled");
+    btnRenaudar.removeAttribute("disabled");
     mostrarMensaje("El tiempo ha sido pausado", "infro", "pausa", "warning");
 }
 
 function termiarTemporizador() {
     pausarTemporizador();
     ms = pomodoroTiempo;
+    btnRenaudar.setAttribute("disabled", "disabled");
+}
+
+function restablecerTemporizador(){
+    Swal.fire({
+        title: "¿Estás seguro que deseas restablecer el temporizador?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        denyButtonText: "No",
+        customClass: {
+            actions: "my-actions",
+            cancelButton: "order-1 right-gap",
+            confirmButton: "order-2",
+            denyButton: "order-3",
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            tiempoText.innerText='00:10';
+            btnRenaudar.setAttribute("disabled", "disabled");
+            ms=10000;
+
+            Swal.fire("Temporizador restablecido", "", "success");
+            
+        } else if (result.isDenied) {
+            Swal.fire("Temporizador conservado", "", "info");
+        }
+    });
 }
 
 const agregarCeroSiEsNecesario = (valor) => {
