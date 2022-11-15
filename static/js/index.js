@@ -30,7 +30,7 @@ formTarea.onsubmit = function (event) {
             );
             return false;
         } 
-        listaTareasPendientes.push(tarea);
+        listaTareasPendientes.unshift(tarea);
 
         renderizarTareasPendientes();
 

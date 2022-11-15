@@ -1,4 +1,7 @@
 const listaTareasTerminadas = [];
+let fecha = new Date();
+let fechaActual;
+let hora;
 
 const tareasTerminadasTable = document.getElementById(
     "tareas-terminadas-table"
@@ -23,6 +26,8 @@ function renderizarTareasTerminadas() {
             <th scope="row">${tarea.id}</th>
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
+            <td>${fechaActual}</td>
+            <td>${hora}</td>
         </tr>`;
     });
 }
@@ -42,8 +47,10 @@ function preguntarPorConfirmacion(tarea, index) {
         },
     }).then((result) => {
         if (result.isConfirmed) {
-            listaTareasTerminadas.push(tarea);
+            listaTareasTerminadas.unshift(tarea);
             listaTareasProceso.splice(index, 1);
+            fechaActual=fecha.toLocaleDateString();
+            hora=fecha.toLocaleTimeString('en-US');
             renderizarTareasProceso();
             renderizarTareasTerminadas();
             termiarTemporizador()

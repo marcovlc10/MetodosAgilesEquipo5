@@ -6,7 +6,7 @@ const tareasProcesoTable = document.getElementById(
 function enProgreso(button) {
     listaTareasPendientes.forEach((tarea, index)=> {
         if(tarea.id == button.dataset.tarea){
-            listaTareasProceso.push(tarea)
+            listaTareasProceso.unshift(tarea)
             listaTareasPendientes.splice(index, 1)
             renderizarTareasPendientes()
             renderizarTareasProceso()
