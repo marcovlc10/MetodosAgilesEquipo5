@@ -176,16 +176,19 @@ function restablecerTemporizador() {
         if (result.isConfirmed) {
             if (alertaDescansoText.hidden == true) {
                 tiempoText.innerText = '00:10';
-                btnRenaudar.setAttribute("disabled", "disabled");
+                btnPausar.setAttribute("disabled", "disabled");
+                btnRenaudar.removeAttribute("disabled");
                 alertaDescansoText.hidden = true;
                 btnOmitir.hidden = true;
                 ms = 10000;
+                clearInterval(temporizadorId);
             } else {
                 tiempoText.innerText = '00:06';
-                btnRenaudar.setAttribute("disabled", "disabled");
+                btnPausar.setAttribute("disabled", "disabled");
                 btnRenaudar.removeAttribute("disabled");
                 alertaDescansoText.innerHTML = "DESCANSO";
                 ms = pomodoroDescanso;
+                clearInterval(temporizadorId);
             }
 
 
