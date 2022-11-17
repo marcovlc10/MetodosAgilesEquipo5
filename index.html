@@ -86,14 +86,26 @@
         <!-- End:Nav -->
 
         <!-- Temporizador -->
-        <center class="mb-3">
+        <center class="mb-3" id="divTemporizador">
             <h2>Temporizador</h2>
             <h4 id="tiempo">00:10</h4>
             <button class="btn btn-danger" onclick="pausarTemporizador()" id="btn-pausar" disabled>Pausar</button>
-            <button class="btn btn-success" onclick="iniciarTemporizador()" id="btn-renaudar" disabled>Renaudar</button>
+            <button class="btn btn-success" onclick="iniciarTemporizador()" id="btn-renaudar" disabled>Reanudar</button>
             <button class="btn btn-danger" onclick="restablecerTemporizador()" id="btn-rest" disabled>Restablecer</button>
-
+            <br><br>
+            <h5 id="txtAlertaDescanso" hidden>DESCANSO</h5>
+            <button class="btn btn-danger" onclick="omitirDescanso()" id="btn-omitir" disabled hidden>Omitir descanso</button>
         </center>
+        <center class="mb-3">
+            <h5 id="contPomodoros">4</h5>
+            <h5 class="enLinea">Pomodoros</h5>
+            <br>
+            <h5 id="contDescansos">0</h5>
+            <h5 class="enLinea">Descansos</h5>
+        </center>
+
+
+
 
         <!-- End: temporizador -->
 
@@ -116,7 +128,8 @@
                             <div class="mb-3">
                                 <label for="descripcion-tarea-input" class="form-label">Descripción de la tarea</label>
                                 <textarea class="form-control" id="descripcion-tarea-input"
-                                    placeholder="Descripción de la tarea" maxlength="100" minlength="1" required></textarea>
+                                    placeholder="Descripción de la tarea" maxlength="100" minlength="1"
+                                    required></textarea>
                             </div>
 
                         </div>
@@ -146,7 +159,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+
 
                         </tbody>
                     </table>
@@ -168,7 +181,7 @@
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Iniciar tarea</th>
                                 <th scope="col">Marcar como completada</th>
-                                <th scope="col">Reestablecer Temporizador</th>
+                                <th scope="col">Marcar como pendiente</th>
 
                             </tr>
                         </thead>
@@ -181,8 +194,8 @@
         </div>
         <!-- End: tareas completadas -->
 
-         <!-- Tareas en terminadas -->
-         <div class="collapse" id="tares-terminadas-div">
+        <!-- Tareas en terminadas -->
+        <div class="collapse" id="tares-terminadas-div">
             <div class="card pt-3">
                 <h5 class="card-header">Tareas terminadas</h5>
                 <div class="card-body">

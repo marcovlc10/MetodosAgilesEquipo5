@@ -21,7 +21,7 @@ formTarea.onsubmit = function (event) {
             descripcionTareaInput.value
         );
         console.log(tareaExiste(tarea))
-        if (tareaExiste(tarea)){
+        if (tareaExiste(tarea)) {
             mostrarMensaje(
                 "Ya existe una tarea con ese nombre o descripción",
                 "error",
@@ -29,7 +29,7 @@ formTarea.onsubmit = function (event) {
                 "warning"
             );
             return false;
-        } 
+        }
         listaTareasPendientes.unshift(tarea);
 
         renderizarTareasPendientes();
@@ -44,7 +44,7 @@ formTarea.onsubmit = function (event) {
             $("#agregar-tarea-modal").modal("hide");
         });
 
-        tituloTareaInput.value = "" 
+        tituloTareaInput.value = ""
         descripcionTareaInput.value = ""
     }
     return false;
@@ -74,7 +74,7 @@ function tareaExiste(tarea) {
             tarea.titulo == item.titulo ||
             tarea.descripcion == item.descripcion
         ) {
-            console.log( tarea.nombre == item.nombre, tarea.descripcion == item.descripcion)
+            console.log(tarea.nombre == item.nombre, tarea.descripcion == item.descripcion)
             test = true;
         }
     });
@@ -91,3 +91,53 @@ function mostrarMensaje(text, icon, tittle, type) {
         confirmButtonColor: "#691C32",
     });
 }
+
+function moverAPendiente(button) {
+    listaTareasProceso.forEach(
+        (tarea, index) => {
+            if (tarea.id == button.dataset.tarea_pendiente) {
+                confirmarMovPendiente(tarea, index)
+            }
+        }
+    );
+}
+
+function confirmarMovPendiente(tarea, index) {
+    Swal.fire({
+        title: "¿Estás seguro que deseas mover la tarea a pendiente?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        denyButtonText: "No",
+        customClass: {
+            actions: "my-actions",
+            cancelButton: "order-1 right-gap",
+            confirmButton: "order-2",
+            denyButton: "order-3",
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            listaTareasPendientes.unshift(tarea);
+            listaTareasProceso.splice(index, 1);
+            renderizarTareasProceso();
+            renderizarTareasPendientes();
+            termiarTemporizador();
+            restablecerTemporizador();
+
+            Swal.fire("Tarea marcada como pendiente correctamente", "", "success");
+            
+        } else if (result.isDenied) {
+            Swal.fire("Tarea conservada!", "", "info");
+        }
+    });
+    return confirmacion;
+}
+
+// function terminar(button) {
+//     listaTareasProceso.forEach((tarea, index) => {
+//         if (tarea.id == button.dataset.tarea_terminada) {
+//             preguntarPorConfirmacion(tarea, index)
+
+//         }
+//     });
+// }

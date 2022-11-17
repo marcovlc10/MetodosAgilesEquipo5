@@ -5,16 +5,36 @@ td:hover {
 .my-actions {
     margin: 0 2em;
 }
+
 .order-1 {
     order: 1;
 }
+
 .order-2 {
     order: 2;
 }
+
 .order-3 {
     order: 3;
 }
 
 .right-gap {
     margin-right: auto;
+}
+
+th, td{
+    text-align: center;
+}
+
+#contPomodoros{
+    display: inline;
+    
+}
+
+#contDescansos{
+    display: inline;
+}
+
+.enLinea{
+    display: inline;
 }
