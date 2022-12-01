@@ -2,15 +2,10 @@ const listaTareasPendientes = [];
 
 const formTarea = document.getElementById("form-tarea");
 const tituloTareaInput = document.getElementById("titulo-tarea-input");
-const descripcionTareaInput = document.getElementById(
-    "descripcion-tarea-input"
-);
+const descripcionTareaInput = document.getElementById("descripcion-tarea-input");
 const btnAgregarTarea = document.getElementById("agregar-tarea-btn");
 const formModal = document.getElementById("agregar-tarea-modal");
-
-const tareasPendientesTable = document.getElementById(
-    "tareas-pendientes-table"
-);
+const tareasPendientesTable = document.getElementById("tareas-pendientes-table");
 
 formTarea.onsubmit = function (event) {
     event.preventDefault();
@@ -61,10 +56,15 @@ function renderizarTareasPendientes() {
             <th scope="row">${tarea.id}</th>
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
+            <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="editar(this)" data-tarea="${tarea.id}">Editar</button></td>
             <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="enProgreso(this)" data-tarea="${tarea.id}">En proceso</button></td>
-            <td><button style="background-color:red; border-color:red" class="btn btn-success" id="tarea-${tarea.id}" onclick="eliminarTareaPendiente(this)" data-tarea_pendiente="${tarea.id}">Eliminar tarea</button></td>
+            <td><button style="background-color:red; border-color:red" class="btn btn-success" id="tarea-${tarea.id}" onclick="eliminarTareaPendiente(this)"data-tarea_pendiente="${tarea.id}">Eliminar tarea</button></td>
         </tr>`;
     });
+}
+
+function editar(tarea){
+    
 }
 
 function tareaExiste(tarea) {
