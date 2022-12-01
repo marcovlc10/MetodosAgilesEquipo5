@@ -62,6 +62,7 @@ function renderizarTareasPendientes() {
             <td>${tarea.titulo}</td>
             <td>${tarea.descripcion}</td>
             <td><button class="btn btn-success" id="tarea-${tarea.id}" onclick="enProgreso(this)" data-tarea="${tarea.id}">En proceso</button></td>
+            <td><button style="background-color:red; border-color:red" class="btn btn-success" id="tarea-${tarea.id}" onclick="eliminarTareaPendiente(this)" data-tarea_pendiente="${tarea.id}">Eliminar tarea</button></td>
         </tr>`;
     });
 }
@@ -131,6 +132,78 @@ function confirmarMovPendiente(tarea, index) {
         }
     });
     return confirmacion;
+}
+
+function eliminarTareaProceso(button) {
+    listaTareasProceso.forEach(
+        (tarea, index) => {
+            if (tarea.id == button.dataset.tarea_pendiente) {
+                Swal.fire({
+                    title: "¿Estás seguro que desea eliminar la tarea?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Sí",
+                    denyButtonText: "No",
+                    customClass: {
+                        actions: "my-actions",
+                        cancelButton: "order-1 right-gap",
+                        confirmButton: "order-2",
+                        denyButton: "order-3",
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        listaTareasProceso.splice(index, 1);
+                        renderizarTareasProceso();
+                        renderizarTareasPendientes();
+                        termiarTemporizador();
+                        restablecerTemporizador();
+            
+                        Swal.fire("Tarea eliminada correctamente", "", "success");
+                        
+                    } else if (result.isDenied) {
+                        Swal.fire("Tarea conservada!", "", "info");
+                    }
+                });
+                return confirmacion;
+            }
+        }
+    );
+}
+
+function eliminarTareaPendiente(button) {
+    listaTareasPendientes.forEach(
+        (tarea, index) => {
+            if (tarea.id == button.dataset.tarea_pendiente) {
+                Swal.fire({
+                    title: "¿Estás seguro que desea eliminar la tarea?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Sí",
+                    denyButtonText: "No",
+                    customClass: {
+                        actions: "my-actions",
+                        cancelButton: "order-1 right-gap",
+                        confirmButton: "order-2",
+                        denyButton: "order-3",
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        listaTareasPendientes.splice(index, 1);
+                        renderizarTareasProceso();
+                        renderizarTareasPendientes();
+                        termiarTemporizador();
+                        restablecerTemporizador();
+            
+                        Swal.fire("Tarea eliminada correctamente", "", "success");
+                        
+                    } else if (result.isDenied) {
+                        Swal.fire("Tarea conservada!", "", "info");
+                    }
+                });
+                return confirmacion;
+            }
+        }
+    );
 }
 
 // function terminar(button) {
