@@ -7,6 +7,14 @@ const btnAgregarTarea = document.getElementById("agregar-tarea-btn");
 const formModal = document.getElementById("agregar-tarea-modal");
 const tareasPendientesTable = document.getElementById("tareas-pendientes-table");
 
+// Editar tarea
+const editarTituloInput = document.getElementById("titulo-tarea-input-editar")
+const editarDescripcionINput = document.getElementById("descripcion-tarea-input-editar")
+const formEditarTarea = document.getElementById("form-editar-tarea")
+
+var tareaEnEdicionId = null
+
+
 formTarea.onsubmit = function (event) {
     event.preventDefault();
     if (tituloTareaInput.value != "" && descripcionTareaInput.value != "") {
@@ -45,12 +53,38 @@ formTarea.onsubmit = function (event) {
     return false;
 };
 
+formEditarTarea.onsubmit = function(event){
+    event.preventDefault()
+    if (editarTituloInput.value != "" && editarDescripcionINput.value != ""){
+        listaTareasPendientes.forEach(tarea => {
+            if(tarea.id == tareaEnEdicionId){
+                tarea.titulo = editarTituloInput.value
+                tarea.descripcion = editarDescripcionINput.value
+
+                if(tareaExiste(tarea)){
+                    mostrarMensaje(
+                        "Ya existe una tarea con ese nombre o descripción",
+                        "error",
+                        "error",
+                        "warning"
+                    );
+                    return false;
+                }
+                renderizarTareasPendientes()
+                $("#editar-tarea-modal").modal("hide");
+
+            }
+        })
+    }
+    return false
+}
+
 function renderizarTareasPendientes() {
     let body = tareasPendientesTable.querySelector("tbody");
     body.innerHTML = "";
 
     listaTareasPendientes.forEach((tarea, index) => {
-        console.log(tarea);
+        // console.log(tarea);
         body.innerHTML += `
         <tr draggable="true" ondragstart="dragit(event)" ondragover="dragover(event)">
             <th scope="row">${tarea.id}</th>
@@ -63,8 +97,16 @@ function renderizarTareasPendientes() {
     });
 }
 
-function editar(tarea){
-    
+
+
+function editar(tareaNode){
+
+    tareaEnEdicionId = tareaNode.dataset.tarea
+    let tarea = listaTareasPendientes.find(tarea => tarea.id == tareaEnEdicionId)
+    console.log("tarea encontrada: ", tarea)
+    $("#editar-tarea-modal").modal("show");
+    editarTituloInput.value = tarea.titulo
+    editarDescripcionINput.value = tarea.descripcion
 }
 
 function tareaExiste(tarea) {

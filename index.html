@@ -57,7 +57,8 @@
                                 data-bs-target="#agregar-tarea-modal">
                                 Agregar tarea
                             </button>
-                            <!-- End: Btn agregar tarea -->
+
+
                             <a class="btn btn-secondary me-3" data-bs-toggle="collapse" href="#tares-pendientes-div"
                                 role="button" aria-expanded="false" aria-controls="tareas-pendientes-div">
                                 Mostrar tareas pendientes
@@ -144,6 +145,40 @@
         </div>
         <!-- End: Modal crear tarea -->
 
+         <!-- Modal editar tarea -->
+         <div class="modal fade" id="editar-tarea-modal" tabindex="-1" aria-labelledby="titleLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleLabel">Editar tarea</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="#" id="form-editar-tarea">
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="titulo-tarea-input" class="form-label">Título de la tarea</label>
+                                <input type="text" class="form-control" id="titulo-tarea-input-editar"
+                                    placeholder="Título de la tarea" maxlength="100" minlength="1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion-tarea-input" class="form-label">Descripción de la tarea</label>
+                                <textarea class="form-control" id="descripcion-tarea-input-editar"
+                                    placeholder="Descripción de la tarea" maxlength="100" minlength="1"
+                                    required></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="editar-tarea-btn">Editar tarea</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End: Modal editar tarea -->
+
         <!-- Tareas pendientes -->
         <div class="collapse" id="tares-pendientes-div">
             <div class="card pt-3">
@@ -184,6 +219,7 @@
                                 <th scope="col">Iniciar tarea</th>
                                 <th scope="col">Marcar como completada</th>
                                 <th scope="col">Marcar como pendiente</th>
+                                <th scope="col">Editar</th>
                                 <th scope="col">Eliminar tarea</th>
                             </tr>
                         </thead>
